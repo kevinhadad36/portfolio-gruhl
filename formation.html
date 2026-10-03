@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formation — Apprendre à créer des sites</title>
+<meta name="description" content="Apprenez à créer des sites vitrines pour les commerces : direction artistique, construction avec l'IA, mise en ligne et premiers clients. Demande par WhatsApp avec le budget de votre choix.">
+<meta name="theme-color" content="#2e2e30">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400;62..100,700&display=swap" rel="stylesheet">
+<style>
+  /* Même système que l'accueil : DESIGN.md « Studio Gruhl » (Refero Styles). */
+  :root{
+    --white:#ffffff; --carbon:#2e2e30; --obsidian:#18181b; --ash:#969696; --black:#000000; --lime:#eef0b1;
+    --gutter:clamp(16px,3vw,32px); --section:120px;
+    --font:"Archivo","GreedStandard",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--carbon);color:var(--white);font:400 16px/1.2 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{padding:0 var(--gutter)}
+
+  .manifesto{font:700 clamp(44px,8.4vw,128px)/1 var(--font);font-stretch:75%;text-transform:uppercase;letter-spacing:-.01em}
+  .big{font:700 clamp(36px,5.4vw,80px)/1 var(--font);font-stretch:75%;text-transform:uppercase;letter-spacing:-.01em}
+  .micro{font-size:11px;line-height:1.15;letter-spacing:.06em;text-transform:uppercase;color:var(--ash)}
+  .ash{color:var(--ash)}
+  .body{font-size:16px;line-height:1.45}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:12px;background:var(--carbon);border:1px solid var(--black);
+    color:var(--white);font:400 15px/1.3 var(--font);transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+  .btn:hover{background:var(--obsidian)}
+  .btn.ghost{background:transparent;border-color:var(--white)}
+  .btn.ghost:hover{background:var(--white);color:var(--obsidian)}
+  .btn.solid{background:var(--white);color:var(--obsidian);border-color:var(--white)}
+  .btn.solid:hover{background:transparent;color:var(--white)}
+
+  .nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:50;background:var(--obsidian);border-radius:9999px;
+    display:flex;align-items:center;gap:6px;padding:6px;max-width:calc(100vw - 24px)}
+  .nav a.p{padding:7px 14px;border-radius:9999px;border:1px solid rgba(255,255,255,.85);background:var(--carbon);font-size:15px;white-space:nowrap;transition:background .2s,color .2s}
+  .nav a.p:hover,.nav a.p[aria-current="page"]{background:var(--white);color:var(--obsidian)}
+  .nav .mono{width:36px;height:36px;border-radius:9999px;background:var(--white);color:var(--obsidian);display:grid;place-items:center;font:700 17px/1 var(--font);margin:0 4px}
+
+  .hero{padding-top:150px;padding-bottom:var(--section)}
+  .hero h1{max-width:13ch}
+  .hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:40px}
+  .hero .row p{max-width:46ch}
+
+  .sec{padding-top:var(--section);padding-bottom:var(--section);border-top:1px solid rgba(255,255,255,.12)}
+  .modules{list-style:none;margin-top:40px;border-top:1px solid rgba(255,255,255,.5)}
+  .modules li{display:grid;grid-template-columns:120px 1fr 1.2fr;gap:24px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.18);align-items:baseline}
+  .modules .n{font:700 48px/1 var(--font);font-stretch:75%}
+  .modules h3{font:700 24px/1.05 var(--font);font-stretch:75%;text-transform:uppercase}
+  .modules p{color:var(--ash);font-size:15px;line-height:1.45}
+
+  .lime{background:var(--lime);color:var(--obsidian);padding:var(--section) 0}
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:40px}
+  .who div{border-radius:12px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+  .who div:nth-child(1){background:#e3e69a}.who div:nth-child(2){background:#d8dc86}.who div:nth-child(3){background:var(--obsidian);color:var(--white)}
+  .who h3{font:700 24px/1.05 var(--font);font-stretch:75%;text-transform:uppercase}
+  .who p{font-size:15px;line-height:1.4}
+  .who div:nth-child(3) p{color:var(--ash)}
+
+  /* ---------- Formulaire ---------- */
+  .apply{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:start}
+  .rule{margin-top:28px;background:var(--obsidian);border-radius:12px;padding:18px 20px;display:flex;gap:14px}
+  .rule b{font-weight:700;flex:0 0 auto}
+  .rule p{color:var(--ash);font-size:15px;line-height:1.45}
+  form{display:grid;gap:22px}
+  label,legend{display:block;font-size:13px;color:var(--ash);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}
+  input[type=text],select{width:100%;background:var(--obsidian);color:var(--white);border:1px solid rgba(255,255,255,.18);border-radius:12px;
+    padding:16px 18px;font:400 16px/1.3 var(--font);transition:border-color .2s;appearance:none;-webkit-appearance:none}
+  select{background-image:linear-gradient(45deg,transparent 50%,var(--ash) 50%),linear-gradient(135deg,var(--ash) 50%,transparent 50%);
+    background-position:calc(100% - 24px) 50%,calc(100% - 18px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+  input[type=text]::placeholder{color:#6b6b6e}
+  input[type=text]:focus,select:focus{outline:none;border-color:var(--white)}
+  fieldset{border:0}
+  .budgets{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .budget{position:relative;text-transform:none;letter-spacing:0;margin:0}
+  .budget input{position:absolute;opacity:0;inset:0;cursor:pointer}
+  .budget span{display:flex;flex-direction:column;gap:6px;background:var(--obsidian);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:16px 18px;min-height:96px;justify-content:space-between;transition:all .2s}
+  .budget span b{font:700 28px/1 var(--font);font-stretch:75%;color:var(--white)}
+  .budget span small{font-size:13px;color:var(--ash)}
+  .budget input:hover + span{border-color:rgba(255,255,255,.6)}
+  .budget input:focus-visible + span{border-color:var(--white)}
+  .budget input:checked + span{background:var(--white);border-color:var(--white)}
+  .budget input:checked + span b{color:var(--obsidian)}
+  .budget input:checked + span small{color:#555}
+  .budget input:disabled{cursor:not-allowed}
+  .budget input:disabled:not(:checked) + span{opacity:.3}
+  .hint{font-size:13px;color:var(--ash);margin-top:10px;text-transform:none;letter-spacing:0}
+  .error{color:#ff9c8c;font-size:14px}
+  form.is-locked input[type=text],form.is-locked select{opacity:.45;pointer-events:none}
+  form.is-locked .submit{display:none}
+
+  .locked{background:var(--lime);color:var(--obsidian);border-radius:12px;padding:22px;display:grid;gap:10px;margin-bottom:22px}
+  .locked h3{font:700 24px/1.05 var(--font);font-stretch:75%;text-transform:uppercase}
+  .locked p{font-size:15px;line-height:1.45}
+  .locked .btn.ghost{border-color:var(--obsidian);color:var(--obsidian)}
+  .locked .btn.ghost:hover{background:var(--obsidian);color:var(--lime)}
+
+  footer{border-top:1px solid rgba(255,255,255,.12);padding:28px 0}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--ash);font-size:15px}
+  .foot nav{display:flex;gap:29px;flex-wrap:wrap}
+  .foot a:hover{color:var(--white)}
+
+  @media (max-width:1000px){
+    .apply{grid-template-columns:1fr}
+    .who{grid-template-columns:1fr}
+    .who div{min-height:0}
+    .modules li{grid-template-columns:72px 1fr}
+    .modules li p{grid-column:2}
+  }
+  @media (max-width:680px){
+    :root{--section:80px}
+    .nav a.hide-m{display:none}
+    .hero{padding-top:120px}
+    .budgets{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navigation principale">
+  <a class="p hide-m" href="index.html#projets">Projets</a>
+  <a class="p hide-m" href="index.html#process">Process</a>
+  <a class="mono" href="index.html" aria-label="Kevin, accueil">K</a>
+  <a class="p" href="formation.html" aria-current="page">Formation</a>
+  <a class="p" href="#demande">Demande</a>
+</nav>
+
+<main>
+  <header class="hero wrap">
+    <span class="micro">Formation — Créer des sites vitrines</span>
+    <h1 class="manifesto" style="margin-top:20px">Apprenez à créer des sites qui se vendent.</h1>
+    <div class="row">
+      <p class="body ash">La méthode que j'utilise pour mes propres projets : trouver un style, construire le site, le mettre en ligne et le présenter à un vrai commerce.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn solid" href="#demande">Choisir mon budget →</a>
+        <a class="btn ghost" href="index.html#projets">Voir mes réalisations</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sec wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <h2 class="big">Le programme</h2>
+      <p class="body ash" style="max-width:40ch">Le contenu et le niveau d'accompagnement sont adaptés au budget que vous indiquez dans votre demande.</p>
+    </div>
+    <ol class="modules">
+      <li><span class="n">01</span><h3>Ce qu'un client attend d'un site</h3><p>Carte, horaires, bouton d'appel, itinéraire, liens de livraison : ce qui fait venir des clients, et ce qui ne sert à rien.</p></li>
+      <li><span class="n">02</span><h3>Trouver une direction artistique</h3><p>Partir de références de design reconnues pour choisir couleurs, typographies et mise en page adaptées à chaque commerce.</p></li>
+      <li><span class="n">03</span><h3>Construire le site avec l'IA</h3><p>Utiliser un assistant de code pour monter un site complet, le relire, le corriger et le rendre lisible sur téléphone.</p></li>
+      <li><span class="n">04</span><h3>Mettre en ligne</h3><p>Publier gratuitement, relier un nom de domaine et mettre à jour le site sans tout recasser.</p></li>
+      <li><span class="n">05</span><h3>Trouver ses premiers clients</h3><p>Repérer les commerces sans site, préparer une maquette avec leurs vraies informations et la présenter.</p></li>
+    </ol>
+  </section>
+
+  <section class="lime">
+    <div class="wrap">
+      <span class="micro" style="color:#5c5c4a">Pour qui</span>
+      <div class="who">
+        <div><h3>Vous partez de zéro</h3><p>Vous n'avez jamais créé de site et vous voulez comprendre comment ça marche, étape par étape.</p></div>
+        <div><h3>Vous voulez un revenu en plus</h3><p>Une activité que vous pouvez lancer depuis chez vous, avec des clients près de chez vous.</p></div>
+        <div><h3>Vous avez un commerce</h3><p>Vous préférez apprendre à faire et à modifier votre site vous-même.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demande" class="sec wrap" style="scroll-margin-top:90px;border-top:0">
+    <div class="apply">
+      <aside>
+        <h2 class="big">Faire ma demande</h2>
+        <p class="body ash" style="margin-top:20px">Indiquez le budget que vous êtes prêt à investir. Votre demande m'arrive directement sur WhatsApp et je vous réponds avec une proposition adaptée.</p>
+        <div class="rule"><b>Important</b><p>Le budget choisi est définitif : une fois la demande envoyée, il ne peut plus être modifié. Prenez le temps de choisir.</p></div>
+      </aside>
+
+      <div>
+        <div class="locked" id="f-locked" hidden role="status">
+          <span class="micro" style="color:#5c5c4a">Demande envoyée</span>
+          <h3>Merci <span id="f-l-prenom"></span>, c'est enregistré.</h3>
+          <p>Budget choisi : <strong id="f-l-budget"></strong>, le <span id="f-l-date"></span>. Ce budget est définitif et ne peut plus être modifié.</p>
+          <p>Si WhatsApp ne s'est pas ouvert, renvoyez la même demande :</p>
+          <div><a class="btn ghost" id="f-resend" href="#" target="_blank" rel="noopener">Renvoyer sur WhatsApp</a></div>
+        </div>
+
+        <form id="f-form" novalidate>
+          <div>
+            <label for="f-prenom">Prénom</label>
+            <input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Votre prénom">
+          </div>
+          <div>
+            <label for="f-niveau">Votre niveau</label>
+            <select id="f-niveau" name="niveau">
+              <option value="">Choisir…</option>
+              <option>Je pars de zéro</option>
+              <option>J'ai quelques bases</option>
+              <option>J'ai déjà fait des sites</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-objectif">Votre objectif</label>
+            <select id="f-objectif" name="objectif">
+              <option value="">Choisir…</option>
+              <option>Créer des sites pour des clients</option>
+              <option>En faire mon métier</option>
+              <option>Créer le site de mon commerce</option>
+              <option>Apprendre par curiosité</option>
+            </select>
+          </div>
+          <fieldset>
+            <legend>Budget que vous êtes prêt à investir</legend>
+            <div class="budgets">
+              <label class="budget"><input type="radio" name="budget" value="Moins de 200 €"><span><b>&lt; 200 €</b><small>Pour démarrer</small></span></label>
+              <label class="budget"><input type="radio" name="budget" value="200 à 500 €"><span><b>200 – 500 €</b><small>Les bases complètes</small></span></label>
+              <label class="budget"><input type="radio" name="budget" value="500 à 1 000 €"><span><b>500 – 1 000 €</b><small>Avec accompagnement</small></span></label>
+              <label class="budget"><input type="radio" name="budget" value="Plus de 1 000 €"><span><b>&gt; 1 000 €</b><small>Accompagnement poussé</small></span></label>
+            </div>
+            <p class="hint">Choix définitif après l'envoi.</p>
+          </fieldset>
+          <p class="error" id="f-error" hidden role="alert"></p>
+          <div class="submit"><button class="btn solid" type="submit" style="padding:12px 20px">Envoyer ma demande sur WhatsApp →</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <span>© <span id="y">2026</span> Kevin</span>
+    <nav aria-label="Pied de page"><a href="index.html#projets">Projets</a><a href="index.html#process">Process</a><a href="formation.html">Formation</a><a href="index.html#contact">Contact</a></nav>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="formation.js"></script>
+</body>
+</html>

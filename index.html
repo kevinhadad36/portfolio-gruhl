@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kevin — Sites vitrines pour commerces</title>
+<meta name="description" content="Je conçois des sites vitrines pour les commerces de Toulouse : restaurants, boutiques, artisans. Une maquette réalisée avec vos vraies informations avant même notre premier rendez-vous.">
+<meta name="theme-color" content="#2e2e30">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400;62..100,700&display=swap" rel="stylesheet">
+<style>
+  /* Système repris du DESIGN.md « Studio Gruhl » (Refero Styles) : manifeste noir mat.
+     Canevas Carbon, couches Obsidian, une inversion Lime Cream, aucune couleur d'action, aucune ombre. */
+  :root{
+    --white:#ffffff;
+    --carbon:#2e2e30;   /* canevas */
+    --obsidian:#18181b; /* nav, couches enfoncées */
+    --ash:#969696;      /* texte secondaire */
+    --black:#000000;
+    --lime:#eef0b1;     /* inversion rare */
+    --gutter:clamp(16px,3vw,32px);
+    --section:120px;
+    --font:"Archivo","GreedStandard",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--carbon);color:var(--white);font:400 16px/1.2 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  section{scroll-margin-top:90px}
+  .wrap{padding:0 var(--gutter)}
+
+  /* ---------- Type ---------- */
+  .manifesto{font:700 clamp(44px,8.4vw,128px)/1 var(--font);font-stretch:75%;text-transform:uppercase;letter-spacing:-.01em}
+  .big{font:700 clamp(36px,5.4vw,80px)/1 var(--font);font-stretch:75%;text-transform:uppercase;letter-spacing:-.01em}
+  .micro{font-size:11px;line-height:1.15;letter-spacing:.06em;text-transform:uppercase;color:var(--ash)}
+  .ash{color:var(--ash)}
+  .body{font-size:16px;line-height:1.45}
+
+  /* ---------- Boutons (neutres, jamais colorés) ---------- */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:12px;background:var(--carbon);border:1px solid var(--black);
+    color:var(--white);font:400 15px/1.3 var(--font);transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+  .btn:hover{background:var(--obsidian)}
+  .btn.ghost{background:transparent;border-color:var(--white)}
+  .btn.ghost:hover{background:var(--white);color:var(--obsidian)}
+  .btn.solid{background:var(--white);color:var(--obsidian);border-color:var(--white)}
+  .btn.solid:hover{background:transparent;color:var(--white)}
+  .tag{display:inline-block;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,.7);font-size:12px;line-height:1}
+
+  /* ---------- Nav pilule flottante ---------- */
+  .nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:50;background:var(--obsidian);border-radius:9999px;
+    display:flex;align-items:center;gap:6px;padding:6px;max-width:calc(100vw - 24px)}
+  .nav a.p{padding:7px 14px;border-radius:9999px;border:1px solid rgba(255,255,255,.85);background:var(--carbon);font-size:15px;white-space:nowrap;transition:background .2s,color .2s}
+  .nav a.p:hover{background:var(--white);color:var(--obsidian)}
+  .nav .mono{width:36px;height:36px;border-radius:9999px;background:var(--white);color:var(--obsidian);display:grid;place-items:center;font:700 17px/1 var(--font);margin:0 4px}
+
+  /* ---------- Hero manifeste ---------- */
+  .hero{padding-top:150px;padding-bottom:48px}
+  .hero h1{max-width:14ch}
+  .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:40px}
+  .hero-row p{max-width:44ch}
+  .hero-row .ctas{display:flex;gap:8px;flex-wrap:wrap}
+
+  /* ---------- Projets plein cadre avec carte flottante ---------- */
+  .feature{position:relative;display:block;margin:0 var(--gutter) 12px;border-radius:12px;overflow:hidden;height:min(82vh,860px);background:var(--obsidian)}
+  .feature img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+  .feature:hover img{transform:scale(1.025)}
+  .info{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:min(520px,calc(100% - 32px));background:var(--obsidian);border-radius:12px;
+    padding:14px 24px 14px 14px;display:flex;align-items:center;gap:14px}
+  .tile{flex:0 0 44px;height:44px;border-radius:9px;background:var(--white);color:var(--obsidian);display:grid;place-items:center;font-size:18px}
+  .info .t{flex:1;min-width:0}
+  .info b{display:block;font-size:15px;font-weight:700}
+  .info small{display:block;font-size:13px;color:var(--ash);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .info .arrow{font-size:20px;transition:transform .3s}
+  .feature:hover .arrow{transform:translateX(4px)}
+
+  /* ---------- Index des projets ---------- */
+  .sec{padding-top:var(--section);padding-bottom:var(--section)}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .case{display:flex;flex-direction:column;background:var(--obsidian);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);transition:border-color .3s}
+  .case:hover{border-color:rgba(255,255,255,.7)}
+  .case .ph{aspect-ratio:16/10;overflow:hidden}
+  .case .ph img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .case:hover .ph img{transform:scale(1.04)}
+  .case .m{padding:16px;display:grid;gap:8px}
+  .case .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+  .case .row b{font-weight:700}
+  .case p{font-size:14px;line-height:1.4;color:var(--ash)}
+  .case .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+
+  /* ---------- Manifeste intermédiaire ---------- */
+  .statement{padding-top:var(--section);padding-bottom:var(--section);border-top:1px solid rgba(255,255,255,.12)}
+  .statement .cols{display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:end;margin-top:40px}
+
+  /* ---------- Process : inversion Lime Cream, panneaux empilés ---------- */
+  .lime{background:var(--lime);color:var(--obsidian);padding:var(--section) 0}
+  .lime .ash{color:#5c5c4a}
+  .panels{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:48px}
+  .panel{border-radius:12px;padding:20px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+  .panel:nth-child(1){background:#e3e69a}.panel:nth-child(2){background:#d8dc86}.panel:nth-child(3){background:#ccd170}.panel:nth-child(4){background:var(--obsidian);color:var(--white)}
+  .panel .n{font:700 72px/1 var(--font);font-stretch:75%}
+  .panel h3{font:700 22px/1.1 var(--font);font-stretch:75%;text-transform:uppercase;margin-bottom:10px}
+  .panel p{font-size:15px;line-height:1.4}
+  .panel:nth-child(4) p{color:var(--ash)}
+  .note{margin-top:28px;max-width:760px;font-size:15px;line-height:1.45}
+
+  /* ---------- Inclus ---------- */
+  .included{list-style:none;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.5);margin-top:32px}
+  .included li{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.18);font-size:16px;line-height:1.35;display:flex;gap:14px}
+  .included li:nth-child(odd){padding-right:24px}
+  .included li:nth-child(even){padding-left:24px;border-left:1px solid rgba(255,255,255,.18)}
+  .included li span:first-child{color:var(--ash)}
+
+  /* ---------- Encart formation ---------- */
+  .teach{display:grid;grid-template-columns:1.6fr 1fr;gap:32px;align-items:end;background:var(--obsidian);border-radius:40px;padding:clamp(28px,5vw,64px);transition:background .3s}
+  .teach:hover{background:#111113}
+  .teach .ctas{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+
+  /* ---------- Contact ---------- */
+  .contact .ctas{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px}
+
+  footer{border-top:1px solid rgba(255,255,255,.12);padding:28px 0}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--ash);font-size:15px}
+  .foot nav{display:flex;gap:29px;flex-wrap:wrap}
+  .foot a:hover{color:var(--white)}
+
+  /* ---------- Apparitions (défilement natif conservé) ---------- */
+  .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1000px){
+    .grid{grid-template-columns:1fr 1fr}
+    .panels{grid-template-columns:1fr 1fr}
+    .panel{min-height:260px}
+    .statement .cols,.teach{grid-template-columns:1fr}
+  }
+  @media (max-width:680px){
+    :root{--section:80px}
+    .nav a.hide-m{display:none}
+    .grid{grid-template-columns:1fr}
+    .panels{grid-template-columns:1fr}
+    .panel{min-height:0}
+    .included{grid-template-columns:1fr}
+    .included li:nth-child(n){padding-left:0;padding-right:0;border-left:0}
+    .feature{height:62vh}
+    .info{bottom:12px;padding-right:16px}
+    .hero{padding-top:120px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important}
+    .js .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<nav class="nav" aria-label="Navigation principale">
+  <a class="p hide-m" href="#projets">Projets</a>
+  <a class="p hide-m" href="#process">Process</a>
+  <a class="mono" href="#top" aria-label="Kevin, accueil">K</a>
+  <a class="p" href="formation.html">Formation</a>
+  <a class="p" href="#contact">Contact</a>
+</nav>
+
+<main id="top">
+
+  <header class="hero wrap">
+    <span class="micro">Conception de sites vitrines — Toulouse</span>
+    <h1 class="manifesto" style="margin-top:20px">Des sites qui donnent envie de pousser la porte.</h1>
+    <div class="hero-row">
+      <p class="body ash">Restaurants, boutiques, artisans : je crée le site de votre commerce avec votre vraie carte, vos horaires et vos avis. Vous voyez le résultat avant de vous engager.</p>
+      <div class="ctas">
+        <a class="btn ghost" href="#projets">Voir les projets ↓</a>
+        <a class="btn" href="https://wa.me/33641478339?text=Bonjour%20Kevin%2C%20je%20voudrais%20un%20site%20pour%20mon%20commerce." target="_blank" rel="noopener">Parlons de votre site</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROJETS À LA UNE -->
+  <div id="projets" style="scroll-margin-top:90px">
+    <a class="feature reveal" href="https://kevinhadad36.github.io/el-qaada/" target="_blank" rel="noopener">
+      <img src="img/el-qaada.png" alt="Site de Toulouse Factory, smash burgers et pizzas halal">
+      <span class="info"><span class="tile">✦</span><span class="t"><b>Toulouse Factory</b><small>Restaurant · Smash burgers & pizzas halal</small></span><span class="arrow">→</span></span>
+    </a>
+    <a class="feature reveal" href="https://kevinhadad36.github.io/monimo/" target="_blank" rel="noopener">
+      <img src="img/monimo.png" alt="Site de Monimo Immobilier" loading="lazy">
+      <span class="info"><span class="tile">✦</span><span class="t"><b>Monimo Immobilier</b><small>Agence immobilière · Moroni, Comores</small></span><span class="arrow">→</span></span>
+    </a>
+    <a class="feature reveal" href="https://kevinhadad36.github.io/iqra-toulouse/" target="_blank" rel="noopener">
+      <img src="img/iqra-toulouse.png" alt="Site d'Iqra Toulouse" loading="lazy">
+      <span class="info"><span class="tile">✦</span><span class="t"><b>Iqra Toulouse</b><small>Cours de Coran · À domicile ou en visio</small></span><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <!-- INDEX -->
+  <section class="sec wrap">
+    <div class="sec-head reveal">
+      <h2 class="big">Tous les projets</h2>
+      <span class="micro">9 sites · 2026</span>
+    </div>
+    <div class="grid">
+      <a class="case reveal" href="https://kevinhadad36.github.io/el-qaada/" target="_blank" rel="noopener"><div class="ph"><img src="img/el-qaada.png" alt="Toulouse Factory" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Toulouse Factory</b><span>↗</span></div><p>Affiche punk rouge sang, carte filtrable, statut « ouvert maintenant » en direct.</p><div class="tags"><span class="tag">Restaurant</span><span class="tag">Livraison</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/grande-istanbul/" target="_blank" rel="noopener"><div class="ph"><img src="img/grande-istanbul.png" alt="Galata Grill" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Galata Grill</b><span>↗</span></div><p>Kebab, tacos et cuisine turque. Quatre pages : accueil, carte, restaurant, contact.</p><div class="tags"><span class="tag">Restaurant</span><span class="tag">4 pages</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/palesto/" target="_blank" rel="noopener"><div class="ph"><img src="img/palesto.png" alt="Palesto" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Palesto</b><span>↗</span></div><p>Tacos français, burgers et snacks halal. Carte complète et commande en livraison.</p><div class="tags"><span class="tag">Restaurant</span><span class="tag">4 pages</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/beyrooth-mood/" target="_blank" rel="noopener"><div class="ph"><img src="img/beyrooth-mood.png" alt="Beyrooth Mood" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Beyrooth Mood</b><span>↗</span></div><p>Restaurant libanais : mezzés, grillades, traiteur. Ardoise de marché en vert cèdre.</p><div class="tags"><span class="tag">Restaurant</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/librairie-tawbah/" target="_blank" rel="noopener"><div class="ph"><img src="img/librairie-tawbah.png" alt="Librairie Sakina" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Librairie Sakina</b><span>↗</span></div><p>Vêtements, livres et parfums. Treize pages, catalogue par rayon, favoris et panier.</p><div class="tags"><span class="tag">Boutique</span><span class="tag">13 pages</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/ks-energie/" target="_blank" rel="noopener"><div class="ph"><img src="img/ks-energie.png" alt="KS Energie" loading="lazy"></div>
+        <div class="m"><div class="row"><b>KS Energie</b><span>↗</span></div><p>Chauffage, climatisation et plomberie. Zone d'intervention et demande de devis.</p><div class="tags"><span class="tag">Artisan</span><span class="tag">Devis</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/garage-saint-agne/" target="_blank" rel="noopener"><div class="ph"><img src="img/garage-saint-agne.png" alt="Garage Saint-Agne" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Garage Saint-Agne</b><span>↗</span></div><p>Entretien, mécanique, pneus, carrosserie. Prise de rendez-vous en ligne.</p><div class="tags"><span class="tag">Garage</span><span class="tag">Rendez-vous</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/iqra-toulouse/" target="_blank" rel="noopener"><div class="ph"><img src="img/iqra-toulouse.png" alt="Iqra Toulouse" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Iqra Toulouse</b><span>↗</span></div><p>Cours de lecture du Coran. Thème clair et sombre automatique, contact WhatsApp.</p><div class="tags"><span class="tag">Enseignement</span></div></div></a>
+      <a class="case reveal" href="https://kevinhadad36.github.io/monimo/" target="_blank" rel="noopener"><div class="ph"><img src="img/monimo.png" alt="Monimo Immobilier" loading="lazy"></div>
+        <div class="m"><div class="row"><b>Monimo Immobilier</b><span>↗</span></div><p>Biens à louer et à vendre avec filtres, fiches détaillées et contact WhatsApp prérempli.</p><div class="tags"><span class="tag">Immobilier</span><span class="tag">Catalogue</span></div></div></a>
+    </div>
+  </section>
+
+  <!-- MANIFESTE -->
+  <section class="statement wrap">
+    <span class="micro">Pourquoi</span>
+    <div class="cols reveal">
+      <h2 class="big">Un commerce sans site, c'est un client qui va chez le voisin.</h2>
+      <p class="body ash">Quand quelqu'un cherche « kebab Toulouse » ou « garage près de chez moi », il compare en dix secondes. Je conçois des sites rapides, lisibles sur téléphone, avec la carte, les horaires, l'itinéraire, un bouton pour appeler et les liens de livraison.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="lime">
+    <div class="wrap">
+      <span class="micro" style="color:#5c5c4a">Process</span>
+      <h2 class="big reveal" style="margin-top:16px;max-width:16ch">Vous voyez votre site avant de dire oui.</h2>
+      <div class="panels">
+        <div class="panel reveal"><span class="n">01</span><div><h3>Repérage</h3><p>Je repère les commerces qui ouvrent ou qui n'ont pas encore de site, et je regarde comment leurs clients les cherchent.</p></div></div>
+        <div class="panel reveal"><span class="n">02</span><div><h3>Maquette réelle</h3><p>Votre carte, vos prix, vos horaires et vos avis publics, dans une direction artistique choisie pour votre commerce.</p></div></div>
+        <div class="panel reveal"><span class="n">03</span><div><h3>Présentation</h3><p>Je vous montre le site en ligne, sur ordinateur et sur téléphone. On ajuste ensemble textes, photos et couleurs.</p></div></div>
+        <div class="panel reveal"><span class="n">04</span><div><h3>Mise en ligne</h3><p>Votre nom de domaine, vos vraies photos, vos coordonnées. Je reste disponible pour les mises à jour.</p></div></div>
+      </div>
+      <p class="note ash reveal">Les projets présentés sont des maquettes réalisées pour de vrais commerces. Pour respecter ceux qui n'ont pas donné suite, certains noms ont été changés et les adresses et numéros de téléphone ont été remplacés.</p>
+    </div>
+  </section>
+
+  <!-- INCLUS -->
+  <section id="inclus" class="sec wrap">
+    <h2 class="big reveal">Ce que comprend chaque site</h2>
+    <ul class="included reveal">
+      <li><span>01</span><span>Adapté au téléphone, à la tablette et à l'ordinateur</span></li>
+      <li><span>02</span><span>Carte, prestations ou catalogue avec les prix</span></li>
+      <li><span>03</span><span>Horaires, et en option un statut « ouvert maintenant » en direct</span></li>
+      <li><span>04</span><span>Bouton d'appel, WhatsApp et itinéraire Google Maps</span></li>
+      <li><span>05</span><span>Liens Uber Eats, Deliveroo et réseaux sociaux</span></li>
+      <li><span>06</span><span>Bases du référencement Google (titres, descriptions, données locales)</span></li>
+      <li><span>07</span><span>Direction artistique propre à votre commerce</span></li>
+      <li><span>08</span><span>Site rapide, sans abonnement à un constructeur</span></li>
+    </ul>
+  </section>
+
+  <!-- FORMATION -->
+  <section class="wrap" style="padding-bottom:var(--section)">
+    <a class="teach reveal" href="formation.html">
+      <div>
+        <span class="micro">Formation</span>
+        <h2 class="big" style="margin-top:16px">Vous voulez apprendre à faire ça ?</h2>
+      </div>
+      <div class="ctas">
+        <p class="body ash">Direction artistique, construction avec l'IA, mise en ligne et premiers clients : la méthode derrière ces projets.</p>
+        <span class="btn solid">Découvrir la formation →</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="statement wrap contact">
+    <span class="micro">Contact</span>
+    <h2 class="manifesto reveal" style="margin-top:20px;max-width:13ch">Votre commerce mérite un site.</h2>
+    <p class="body ash" style="margin-top:28px;max-width:44ch">Envoyez-moi le nom de votre commerce : je vous prépare une première version.</p>
+    <div class="ctas">
+      <a class="btn solid" href="https://wa.me/33641478339?text=Bonjour%20Kevin%2C%20je%20voudrais%20un%20site%20pour%20mon%20commerce." target="_blank" rel="noopener">Écrire sur WhatsApp →</a>
+      <a class="btn ghost" href="tel:+33641478339">Appeler le 06 41 47 83 39</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <span>© <span id="y">2026</span> Kevin</span>
+    <nav aria-label="Pied de page"><a href="#projets">Projets</a><a href="#process">Process</a><a href="formation.html">Formation</a><a href="#contact">Contact</a></nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
